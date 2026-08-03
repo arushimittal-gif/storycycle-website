@@ -1,0 +1,289 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Roboto", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+
+  /* StoryCycle brand palette (canonical Bowstring + confirmed extension) */
+  --color-sc-amber: #FBB03B;
+  --color-sc-charcoal: #25282A;
+  --color-sc-cream: #ECEAE3;
+  --color-sc-brown: #89441E;
+  --color-sc-gray: #A7A8A9;
+  --color-sc-coolgray: #53565A;
+
+  /* Spacing scale — one rhythm, repeated */
+  --space-section: clamp(96px, 12vh, 160px);
+  --space-block: 64px;
+  --space-element: 24px;
+  --space-tight: 12px;
+
+  /* Fabrica-system surface radii */
+  --radius-frame: 24px;
+  --radius-card: 18px;
+  --radius-tile: 14px;
+}
+
+/* Global container — capped so it doesn't break down on ultra-wide */
+.sc-container {
+  width: 90%;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Section vertical rhythm — sections own their padding; no separate spacers */
+.sc-section {
+  padding-top: var(--space-section);
+  padding-bottom: var(--space-section);
+}
+
+html { scroll-behavior: smooth; }
+body { background: #ECEAE3; color: #25282A; }
+
+/* ─────────────────────────────────────────────────────────
+   FABRICA SYSTEM — light editorial ground, giant display
+   type, numbered counters, rounded surfaces, pill buttons.
+   ───────────────────────────────────────────────────────── */
+
+/* Giant display head — sentence case, tight, trailing period supplied in copy */
+.fab-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 0.98;
+  margin: 0;
+}
+
+/* Numbered counter label — "(07)", "(001)" */
+.fab-counter {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #FBB03B;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Inset rounded frame — hero + media cards */
+.fab-frame {
+  border-radius: var(--radius-frame);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Dark band section ground */
+.fab-band {
+  background: #1D1F21;
+  color: #ECEAE3;
+}
+
+/* White card on the cream ground */
+.fab-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(37, 40, 42, 0.08);
+  border-radius: var(--radius-card);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+}
+.fab-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(37, 40, 42, 0.18);
+}
+
+/* Hover list row — case studies, insights, sources */
+.fab-row {
+  display: block;
+  border-top: 1px solid rgba(37, 40, 42, 0.14);
+  padding: 26px 0;
+  text-decoration: none;
+  transition: background 0.25s ease;
+}
+.fab-row:last-child { border-bottom: 1px solid rgba(37, 40, 42, 0.14); }
+.fab-row .fab-row-title {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s ease;
+}
+.fab-row:hover .fab-row-title {
+  transform: translateX(10px);
+  color: #FBB03B;
+}
+.fab-row .fab-row-arrow {
+  opacity: 0.25;
+  transition: opacity 0.25s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.fab-row:hover .fab-row-arrow {
+  opacity: 1;
+  transform: translateX(4px);
+}
+/* Row variant on dark bands */
+.fab-band .fab-row { border-color: rgba(236, 234, 227, 0.16); }
+.fab-band .fab-row:last-child { border-bottom-color: rgba(236, 234, 227, 0.16); }
+
+/* Pill buttons */
+.fab-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 999px;
+  background: #FBB03B;
+  color: #25282A;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  padding: 16px 28px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), background 0.25s ease;
+}
+.fab-pill:hover { transform: translateY(-2px); }
+.fab-pill-dark {
+  background: #25282A;
+  color: #ECEAE3;
+}
+
+/* Crop-mark plus glyphs */
+.fab-plus {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 1;
+  opacity: 0.35;
+  user-select: none;
+}
+
+/* Accordion (numbered 001–00n) */
+.fab-acc-item { border-top: 1px solid rgba(37, 40, 42, 0.14); }
+.fab-acc-item:last-child { border-bottom: 1px solid rgba(37, 40, 42, 0.14); }
+.fab-acc-trigger {
+  width: 100%;
+  display: flex;
+  align-items: baseline;
+  gap: clamp(16px, 3vw, 40px);
+  padding: 26px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+.fab-acc-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.fab-acc-body.open { grid-template-rows: 1fr; }
+.fab-acc-body > div { overflow: hidden; }
+@media (prefers-reduced-motion: reduce) {
+  .fab-acc-body { transition: none; }
+}
+
+/* Arrow micro-animation (kept from the previous system) */
+@keyframes flyOutRight {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(250%); }
+}
+@keyframes flyInLeft {
+  0% { transform: translateX(-250%); }
+  100% { transform: translateX(0); }
+}
+.animate-fly-out { animation: flyOutRight 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+.animate-fly-in { animation: flyInLeft 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+
+@keyframes flyOutUp {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-150%); }
+}
+@keyframes flyInUp {
+  0% { transform: translateY(150%); }
+  100% { transform: translateY(0); }
+}
+.animate-fly-out-up { animation: flyOutUp 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+.animate-fly-in-up { animation: flyInUp 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+
+/* ─────────────────────────────────────────────────────────
+   HUBSPOT AUDIT FORM — restyles HubSpot's "hsfc" form-renderer
+   markup (.hs-form-html embed) to match the fab-card form system.
+   Class names (hsfc-Row, hsfc-FieldLabel, hsfc-TextInput,
+   hsfc-DropdownInput, hsfc-Button, …) come from HubSpot's current
+   forms component library — confirmed against the live embed's
+   rendered DOM, not the legacy .hs-form-field markup.
+   ───────────────────────────────────────────────────────── */
+.hs-audit-embed .hsfc-Row { margin-bottom: 20px; }
+.hs-audit-embed .hsfc-Row:last-of-type { margin-bottom: 0; }
+
+.hs-audit-embed .hsfc-FieldLabel {
+  display: block;
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: #25282A;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 8px;
+}
+.hs-audit-embed .hsfc-FieldLabel__RequiredIndicator {
+  color: #C0392B;
+}
+
+.hs-audit-embed .hsfc-TextInput,
+.hs-audit-embed .hsfc-DropdownInput {
+  width: 100%;
+  box-sizing: border-box;
+  background: white;
+  padding: 13px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #25282A;
+  font-family: 'Roboto', sans-serif;
+  border: 1px solid rgba(37, 40, 42, 0.15);
+  transition: border-color 0.15s ease;
+}
+.hs-audit-embed .hsfc-TextInput:focus,
+.hs-audit-embed .hsfc-DropdownInput:focus {
+  border-color: #25282A;
+  outline: none;
+}
+
+.hs-audit-embed .hsfc-DropdownOptions {
+  border-radius: 10px;
+  border: 1px solid rgba(37, 40, 42, 0.15);
+  overflow: hidden;
+  font-family: 'Roboto', sans-serif;
+}
+.hs-audit-embed .hsfc-DropdownOptions__List__ListItem {
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  color: #25282A;
+}
+
+.hs-audit-embed .hsfc-NavigationRow { margin-top: 8px; }
+
+.hs-audit-embed .hsfc-Button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 999px !important;
+  background: #FBB03B;
+  color: #25282A;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  padding: 16px 28px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hs-audit-embed .hsfc-Button:hover { transform: translateY(-2px); }
+
+/* Reveal — CSS-based fade-up (no JS dependency; always ends visible) */
+@keyframes scFadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.sc-reveal { animation: scFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+@media (prefers-reduced-motion: reduce) {
+  .sc-reveal { animation: none; }
+  .fab-pill, .fab-card, .fab-row .fab-row-title, .fab-row .fab-row-arrow { transition: none; }
+}
