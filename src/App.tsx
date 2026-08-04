@@ -19,6 +19,7 @@ import { PaulDowns } from './pages/PaulDowns'
 import { LillyFasteners } from './pages/LillyFasteners'
 import { PEPortfolio } from './pages/PEPortfolio'
 import { Insights } from './pages/Insights'
+import { InsightArticle } from './pages/InsightArticle'
 import { Sources } from './pages/Sources'
 import { Intro } from './pages/Intro'
 import { IgHub } from './pages/IgHub'
@@ -73,6 +74,7 @@ export default function App() {
         <Route path="/results/pe-portfolio" element={<PEPortfolio />} />
 
         <Route path="/insights" element={<Insights />} />
+        <Route path="/insights/:slug" element={<InsightArticle />} />
         <Route path="/sources" element={<Sources />} />
 
         <Route path="*" element={<ComingSoon />} />

@@ -1,8 +1,10 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { ArrowUpRight } from 'lucide-react'
 import { PageHero } from '../components/PageHero'
 import { Section, Eyebrow, Headline, Body, Reveal, ListRow } from '../components/primitives'
 import { Meta } from '../components/Meta'
+import { ARTICLES_BY_DATE_DESC } from '../data/articles'
 
 // HubSpot whitepaper "Notify Me" form — portal 6878183, form 080dea10-22d2-4456-ba7d-7c5dd70efd30.
 // The iframe embed HubSpot gives for this form can't be restyled from our CSS (cross-origin), so
@@ -68,33 +70,28 @@ function WhitepaperForm() {
   )
 }
 
-// Article titles + LinkedIn URLs TBC pending confirmation from Enrique.
-// Wireframe lists them as "Article NN"; all 13 cards link out to LinkedIn in a new tab.
-// TODO: populate with the real { title, url } per article once supplied.
-const ARTICLE_LINKS: Record<number, string> = {}
-const FEATURED = [1, 2, 3]
-const RECENT = [4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+// Newest 3 posts lead as "Featured"; the rest sit under "Recent Thinking".
+const FEATURED = ARTICLES_BY_DATE_DESC.slice(0, 3)
+const RECENT = ARTICLES_BY_DATE_DESC.slice(3)
 
-function FeaturedCard({ n, wide = false }: { n: number; wide?: boolean }) {
-  const href = ARTICLE_LINKS[n] ?? '#'
+function FeaturedCard({ article, wide = false }: { article: (typeof ARTICLES_BY_DATE_DESC)[number]; wide?: boolean }) {
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
+    <Link
+      to={`/insights/${article.slug}`}
       className="fab-card block group"
       style={{ textDecoration: 'none', padding: wide ? 'clamp(32px,5vw,72px)' : 'clamp(24px,3vw,40px)' }}
     >
+      <p className="fab-counter" style={{ marginBottom: '14px' }}>{article.category}</p>
       <h3
         className="fab-display"
         style={{ fontSize: wide ? 'clamp(1.75rem, 3.5vw, 3rem)' : 'clamp(1.25rem, 2.2vw, 1.75rem)', color: '#25282A', margin: 0 }}
       >
-        {`Featured Article ${String(n).padStart(2, '0')}`}
+        {article.title}
       </h3>
       <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', marginTop: '18px', fontFamily: 'Roboto, sans-serif', fontSize: '11px', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'rgba(37,40,42,0.6)' }}>
-        Read on LinkedIn <ArrowUpRight size={13} strokeWidth={2.5} style={{ color: '#FBB03B' }} />
+        {article.date} · {article.readTime} <ArrowUpRight size={13} strokeWidth={2.5} style={{ color: '#FBB03B' }} />
       </span>
-    </a>
+    </Link>
   )
 }
 
@@ -116,12 +113,12 @@ export function Insights() {
           <Headline className="mb-[var(--space-block)]">Start here.</Headline>
         </Reveal>
         <div className="flex flex-col gap-4" style={{ marginTop: 'var(--space-block)' }}>
-          {/* Article 01 — full-width dominant hero */}
-          <FeaturedCard n={FEATURED[0]} wide />
-          {/* Articles 02 + 03 — standard-width pair */}
+          {/* Newest post — full-width dominant hero */}
+          <FeaturedCard article={FEATURED[0]} wide />
+          {/* Next two — standard-width pair */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FeaturedCard n={FEATURED[1]} />
-            <FeaturedCard n={FEATURED[2]} />
+            <FeaturedCard article={FEATURED[1]} />
+            <FeaturedCard article={FEATURED[2]} />
           </div>
         </div>
       </Section>
@@ -131,13 +128,12 @@ export function Insights() {
           <Eyebrow>Recent Thinking</Eyebrow>
         </Reveal>
         <div style={{ marginTop: 'var(--space-block)' }}>
-          {RECENT.map((n) => (
+          {RECENT.map((article) => (
             <ListRow
-              key={n}
-              title={`Article ${String(n).padStart(2, '0')}`}
-              meta="Read on LinkedIn"
-              to={ARTICLE_LINKS[n] ?? '#'}
-              external
+              key={article.slug}
+              title={article.title}
+              meta={`${article.date} · ${article.readTime}`}
+              to={`/insights/${article.slug}`}
             />
           ))}
         </div>
