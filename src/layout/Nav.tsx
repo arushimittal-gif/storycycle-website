@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { NAV_LINKS, CTA_COPY, MEETING_URL } from '../lib/brand'
+import logoColor from '../assets/logo/storycycle-color.svg'
+import logoReverse from '../assets/logo/storycycle-reverse.svg'
 
 function NavItem({ text, to }: { text: string; to: string }) {
   const { pathname } = useLocation()
@@ -27,18 +29,8 @@ function NavItem({ text, to }: { text: string; to: string }) {
 
 export function Logo({ onDark = false }: { onDark?: boolean }) {
   return (
-    <Link
-      to="/"
-      style={{
-        fontFamily: 'Montserrat, sans-serif',
-        fontWeight: 700,
-        fontSize: '17px',
-        letterSpacing: '-0.02em',
-        color: onDark ? '#ECEAE3' : '#25282A',
-        textDecoration: 'none',
-      }}
-    >
-      storycycle<sup style={{ fontSize: '8px', verticalAlign: 'super', marginLeft: '1px' }}>™</sup>
+    <Link to="/" style={{ display: 'inline-flex', lineHeight: 0 }}>
+      <img src={onDark ? logoReverse : logoColor} alt="StoryCycle" style={{ height: '34px', width: 'auto', display: 'block' }} />
     </Link>
   )
 }

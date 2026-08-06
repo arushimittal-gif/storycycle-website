@@ -31,7 +31,6 @@ function AuditForm() {
 
 export function FastAudit() {
   const faqs = [
-    ['How much does the audit cost?', 'The Fast Positioning Audit is a flat $10,000.'],
     ['Who runs the audit?', 'A senior StoryCycle strategist. Same strategist who runs Phase 02 if you proceed.'],
     ["What if we don't proceed?", 'The written diagnosis is yours.'],
     ['How do we prepare?', 'No prep required. We bring the structure.'],

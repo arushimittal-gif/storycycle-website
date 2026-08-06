@@ -36,6 +36,50 @@ function splitUnderline(text: string, underline: string) {
   }
 }
 
+function ImageBox({ src, alt }: { src?: string; alt?: string }) {
+  return src ? (
+    <img
+      src={src}
+      alt={alt ?? ''}
+      style={{ display: 'block', width: '100%', aspectRatio: '1/1', objectFit: 'cover', borderRadius: 'var(--radius-card)' }}
+    />
+  ) : (
+    <div
+      className="relative"
+      style={{ aspectRatio: '1/1', borderRadius: 'var(--radius-card)', background: `linear-gradient(160deg, ${INK} 0%, #34383a 100%)`, overflow: 'hidden' }}
+    >
+      <img src={patternCircles} alt="" style={{ position: 'absolute', right: '-80px', top: '-80px', width: '380px', opacity: 0.5 }} />
+    </div>
+  )
+}
+
+// ArticleMain wraps the hero text + full body in ONE grid row alongside the
+// image column. Row height follows the (long) text+body column, not the
+// image, so the article text starts right after the byline instead of
+// waiting for a tall image to clear — the original bug.
+export function ArticleMain({
+  heroImage,
+  heroAlt,
+  children,
+}: {
+  heroImage?: string
+  heroAlt?: string
+  children: React.ReactNode
+}) {
+  return (
+    <section className="sc-section">
+      <div className="sc-container grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-16 items-start">
+        <div style={{ maxWidth: '720px' }}>{children}</div>
+        <div className="hidden lg:block">
+          <Reveal delay={0.1}>
+            <ImageBox src={heroImage} alt={heroAlt} />
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 export function ArticleHero({
   category,
   title,
@@ -60,114 +104,86 @@ export function ArticleHero({
   const { before, matched, after } = splitUnderline(title, underline)
 
   return (
-    <section className="sc-section" style={{ paddingBottom: 'clamp(48px,6vh,72px)' }}>
-      <div className="sc-container grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-16 items-center">
-        <Reveal>
-          <div className="flex items-center gap-3 mb-7">
-            <span
-              style={{
-                fontFamily: 'Montserrat, sans-serif',
-                fontSize: '11px',
-                fontWeight: 700,
-                textTransform: 'uppercase',
-                letterSpacing: '0.12em',
-                color: INK,
-                background: AMBER,
-                padding: '6px 12px',
-                borderRadius: '999px',
-              }}
-            >
-              Insights
-            </span>
-            <span
-              style={{
-                fontFamily: 'Montserrat, sans-serif',
-                fontSize: '11px',
-                fontWeight: 600,
-                textTransform: 'uppercase',
-                letterSpacing: '0.12em',
-                color: 'rgba(37,40,42,0.45)',
-              }}
-            >
-              {category}
-            </span>
-          </div>
-          <h1
-            className="fab-display"
-            style={{ fontSize: 'clamp(2.2rem,4.4vw,3.4rem)', color: INK, margin: '0 0 24px', textWrap: 'balance' as React.CSSProperties['textWrap'] }}
-          >
-            {before}
-            <span style={{ display: 'inline-block', position: 'relative', paddingBottom: '6px' }}>
-              {matched}
-              <span style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: '8px', background: AMBER, borderRadius: '1px' }} />
-            </span>
-            {after}
-          </h1>
-          <p style={{ fontFamily: 'Roboto, sans-serif', fontSize: '18px', lineHeight: 1.6, color: 'rgba(37,40,42,0.7)', margin: '0 0 32px', maxWidth: '34em' }}>
-            {sub}
-          </p>
-          <div className="flex items-center gap-4 pt-6" style={{ borderTop: '1px solid rgba(37,40,42,0.14)' }}>
-            <div
-              style={{
-                width: '44px',
-                height: '44px',
-                borderRadius: '999px',
-                background: AMBER,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontFamily: 'Montserrat, sans-serif',
-                fontWeight: 800,
-                fontSize: '14px',
-                color: INK,
-              }}
-            >
-              {initials(author)}
-            </div>
-            <div className="flex flex-col gap-0.5">
-              <span style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '14px', fontWeight: 700, color: INK }}>{author}</span>
-              <span style={{ fontFamily: 'Roboto, sans-serif', fontSize: '13px', color: 'rgba(37,40,42,0.45)' }}>{date} · {readTime}</span>
-            </div>
-          </div>
-        </Reveal>
-        <Reveal delay={0.1}>
-          <figure className="relative" style={{ margin: 0 }}>
-            <div className="fab-card" style={{ position: 'absolute', inset: '20px -20px -20px 20px', border: 'none' }} />
-            {heroImage ? (
-              <img
-                src={heroImage}
-                alt={heroAlt ?? ''}
-                style={{ position: 'relative', display: 'block', width: '100%', aspectRatio: '1/1', objectFit: 'cover', borderRadius: 'var(--radius-card)' }}
-              />
-            ) : (
-              <div
-                className="relative"
-                style={{
-                  aspectRatio: '1/1',
-                  borderRadius: 'var(--radius-card)',
-                  background: `linear-gradient(160deg, ${INK} 0%, #34383a 100%)`,
-                  overflow: 'hidden',
-                }}
-              >
-                <img src={patternCircles} alt="" style={{ position: 'absolute', right: '-80px', top: '-80px', width: '380px', opacity: 0.5 }} />
-              </div>
-            )}
-          </figure>
-        </Reveal>
+    <Reveal>
+      <div className="flex items-center gap-3 mb-7">
+        <span
+          style={{
+            fontFamily: 'Montserrat, sans-serif',
+            fontSize: '11px',
+            fontWeight: 700,
+            textTransform: 'uppercase',
+            letterSpacing: '0.12em',
+            color: INK,
+            background: AMBER,
+            padding: '6px 12px',
+            borderRadius: '999px',
+          }}
+        >
+          Insights
+        </span>
+        <span
+          style={{
+            fontFamily: 'Montserrat, sans-serif',
+            fontSize: '11px',
+            fontWeight: 600,
+            textTransform: 'uppercase',
+            letterSpacing: '0.12em',
+            color: 'rgba(37,40,42,0.45)',
+          }}
+        >
+          {category}
+        </span>
       </div>
-    </section>
+      <h1
+        className="fab-display"
+        style={{ fontSize: 'clamp(2.2rem,4.4vw,3.4rem)', color: INK, margin: '0 0 24px', textWrap: 'balance' as React.CSSProperties['textWrap'] }}
+      >
+        {before}
+        <span style={{ display: 'inline-block', position: 'relative', paddingBottom: '6px' }}>
+          {matched}
+          <span style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: '8px', background: AMBER, borderRadius: '1px' }} />
+        </span>
+        {after}
+      </h1>
+      <p style={{ fontFamily: 'Roboto, sans-serif', fontSize: '18px', lineHeight: 1.6, color: 'rgba(37,40,42,0.7)', margin: '0 0 32px', maxWidth: '34em' }}>
+        {sub}
+      </p>
+      <div className="flex items-center gap-4 pt-6" style={{ borderTop: '1px solid rgba(37,40,42,0.14)' }}>
+        <div
+          style={{
+            width: '44px',
+            height: '44px',
+            borderRadius: '999px',
+            background: AMBER,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontFamily: 'Montserrat, sans-serif',
+            fontWeight: 800,
+            fontSize: '14px',
+            color: INK,
+          }}
+        >
+          {initials(author)}
+        </div>
+        <div className="flex flex-col gap-0.5">
+          <span style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '14px', fontWeight: 700, color: INK }}>{author}</span>
+          <span style={{ fontFamily: 'Roboto, sans-serif', fontSize: '13px', color: 'rgba(37,40,42,0.45)' }}>{date} · {readTime}</span>
+        </div>
+      </div>
+      {/* Mobile-only inline image — the sticky column beside it is desktop-only (lg:hidden there, visible here) */}
+      <div className="lg:hidden" style={{ marginTop: 'var(--space-element)' }}>
+        <ImageBox src={heroImage} alt={heroAlt} />
+      </div>
+    </Reveal>
   )
 }
 
 export function ArticleProse({ children }: { children: React.ReactNode }) {
   return (
-    <section className="sc-section" style={{ paddingTop: 0 }}>
-      <div className="sc-container">
-        <article style={{ maxWidth: '720px', fontFamily: 'Roboto, sans-serif', fontSize: '17px', lineHeight: 1.75, color: COOL }}>
-          {children}
-        </article>
-      </div>
-    </section>
+    <article style={{ marginTop: 'var(--space-element)', fontFamily: 'Roboto, sans-serif', fontSize: '17px', lineHeight: 1.75, color: COOL }}>
+      {children}
+    </article>
   )
 }
 

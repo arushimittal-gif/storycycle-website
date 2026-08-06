@@ -5,8 +5,9 @@ import makingComplexProductsHuman from '../assets/articles/making-complex-produc
 import productionPlanningModule from '../assets/articles/production-planning-module.png'
 import whyAuthenticity from '../assets/articles/why-authenticity.png'
 import emotionalRoi from '../assets/articles/emotional-roi.png'
-import fromStoryToSystem from '../assets/articles/from-story-to-system.png'
-import buildingTrustThroughConsistency from '../assets/articles/building-trust-through-consistency.png'
+import creativeConversionDivide from '../assets/articles/creative-conversion-divide.png'
+import messageLostDigitalDin from '../assets/articles/message-lost-digital-din.png'
+import accidentalArchitectsContentInflation from '../assets/articles/accidental-architects-content-inflation.png'
 
 export type ArticleBlock =
   | { type: 'p'; text: string }
@@ -38,8 +39,8 @@ export const ARTICLES: Article[] = [
     date: 'September 25, 2025',
     readTime: '4 min read',
     sub: 'Creativity without conversion is art therapy. Conversion without creativity is spam. The fix is a story that does both.',
-    heroImage: fromStoryToSystem,
-    heroAlt: 'From story to system — bridging creative and conversion',
+    heroImage: creativeConversionDivide,
+    heroAlt: 'A hand bridging the gap between two disconnected road segments',
     content: [
       { type: 'p', text: "In conference rooms across America, a predictable drama plays out: Creative teams craft beautiful campaigns that barely move the needle. Performance teams optimize conversion rates on messaging that feels soulless. Meanwhile, decision-makers watch qualified leads slip through the cracks of this artificial divide." },
       { type: 'p', text: 'The inbox has become a graveyard of gorgeous content that never converts and converting copy that no one remembers.' },
@@ -80,8 +81,8 @@ export const ARTICLES: Article[] = [
     date: 'October 16, 2025',
     readTime: '6 min read',
     sub: "Your story is scattered across silos, and prospects experience whiplash at every touchpoint. Here's what alignment actually compresses.",
-    heroImage: buildingTrustThroughConsistency,
-    heroAlt: 'Building trust through consistency across every touchpoint',
+    heroImage: messageLostDigitalDin,
+    heroAlt: 'People and speech bubbles lost in the digital din',
     content: [
       { type: 'p', text: "Your sales rep just sent the perfect pitch. Your prospect opened it, read three lines, and deleted it, not because it was bad, but because it sounded nothing like the brilliant content that caught their attention last week. This happens constantly: prospects engage with your brand, then vanish when your follow-up feels like it came from a different company entirely." },
       { type: 'p', text: "The inbox has become a graveyard of forgotten pitches. Decision-makers have grown deaf to generic outreach. The problem isn't your product; it's that your story is scattered across silos, and prospects experience whiplash at every touchpoint." },
@@ -391,6 +392,8 @@ export const ARTICLES: Article[] = [
     date: 'July 14, 2026',
     readTime: '2 min read',
     sub: 'When supply is infinite, the value of any individual piece of content drops to near zero.',
+    heroImage: accidentalArchitectsContentInflation,
+    heroAlt: 'Two people stacking and rearranging blocks of content',
     content: [
       { type: 'p', text: "I've watched technology disrupt how we create for thirty years. From the early days of desktop publishing to the current explosion of AI, I've advocated for these tools long before they hit the mainstream. Every wave brought the same panic: this will kill the craft, this will destroy the industry." },
       { type: 'p', text: 'Mostly, the fears were wrong. Great work flourished because the signal-to-noise ratio remained healthy. But AI is changing the equation.' },
@@ -412,6 +415,8 @@ export const ARTICLES: Article[] = [
     date: 'July 21, 2026',
     readTime: '5 min read',
     sub: "The problem isn't that the system failed. The problem is that it succeeded beyond its original assumptions.",
+    heroImage: accidentalArchitectsContentInflation,
+    heroAlt: 'Two people stacking and rearranging blocks of content',
     content: [
       { type: 'p', text: "After publishing my recent essay on content inflation, several people reached out with essentially the same question: who's responsible?" },
       { type: 'p', text: 'Was it social media? The algorithms? Marketers? Agencies? Influencers? AI?' },

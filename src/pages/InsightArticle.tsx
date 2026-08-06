@@ -2,6 +2,7 @@ import { Navigate, useParams } from 'react-router-dom'
 import { Meta } from '../components/Meta'
 import { getArticleBySlug, getNextArticle } from '../data/articles'
 import {
+  ArticleMain,
   ArticleHero,
   ArticleProse,
   ArticleP,
@@ -25,36 +26,38 @@ export function InsightArticle() {
   return (
     <>
       <Meta title={`${article.title} — StoryCycle Insights`} description={article.sub} />
-      <ArticleHero
-        category={article.category}
-        title={article.title}
-        underline={article.underline}
-        sub={article.sub}
-        date={article.date}
-        readTime={article.readTime}
-        heroImage={article.heroImage}
-        heroAlt={article.heroAlt}
-      />
-      <ArticleProse>
-        {article.content.map((block, i) => {
-          switch (block.type) {
-            case 'p':
-              return <ArticleP key={i}>{block.text}</ArticleP>
-            case 'h2':
-              return <ArticleH2 key={i} num={block.num}>{block.text}</ArticleH2>
-            case 'list':
-              return <ArticleList key={i} items={block.items} />
-            case 'quote':
-              return <ArticlePullQuote key={i}>{block.text}</ArticlePullQuote>
-            case 'grid':
-              return <ArticleGrid key={i} items={block.items} />
-            case 'highlight':
-              return <ArticleHighlight key={i} label={block.label} items={block.items} />
-            default:
-              return null
-          }
-        })}
-      </ArticleProse>
+      <ArticleMain heroImage={article.heroImage} heroAlt={article.heroAlt}>
+        <ArticleHero
+          category={article.category}
+          title={article.title}
+          underline={article.underline}
+          sub={article.sub}
+          date={article.date}
+          readTime={article.readTime}
+          heroImage={article.heroImage}
+          heroAlt={article.heroAlt}
+        />
+        <ArticleProse>
+          {article.content.map((block, i) => {
+            switch (block.type) {
+              case 'p':
+                return <ArticleP key={i}>{block.text}</ArticleP>
+              case 'h2':
+                return <ArticleH2 key={i} num={block.num}>{block.text}</ArticleH2>
+              case 'list':
+                return <ArticleList key={i} items={block.items} />
+              case 'quote':
+                return <ArticlePullQuote key={i}>{block.text}</ArticlePullQuote>
+              case 'grid':
+                return <ArticleGrid key={i} items={block.items} />
+              case 'highlight':
+                return <ArticleHighlight key={i} label={block.label} items={block.items} />
+              default:
+                return null
+            }
+          })}
+        </ArticleProse>
+      </ArticleMain>
       {next && (
         <ArticleNext
           slug={next.slug}
