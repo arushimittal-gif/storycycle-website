@@ -452,15 +452,15 @@ export function getArticleBySlug(slug: string) {
   return ARTICLES.find((a) => a.slug === slug)
 }
 
-// Newest first — the same reading order used on the Insights list, so
+// Oldest first — the same reading order used on the Insights list, so
 // "read next" from any article follows the order a visitor already sees.
-export const ARTICLES_BY_DATE_DESC = [...ARTICLES].sort(
-  (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+export const ARTICLES_ORDERED = [...ARTICLES].sort(
+  (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
 )
 
-// Wraps to the newest article after the oldest one.
+// Wraps to the oldest article after the newest one.
 export function getNextArticle(slug: string) {
-  const i = ARTICLES_BY_DATE_DESC.findIndex((a) => a.slug === slug)
+  const i = ARTICLES_ORDERED.findIndex((a) => a.slug === slug)
   if (i === -1) return undefined
-  return ARTICLES_BY_DATE_DESC[(i + 1) % ARTICLES_BY_DATE_DESC.length]
+  return ARTICLES_ORDERED[(i + 1) % ARTICLES_ORDERED.length]
 }

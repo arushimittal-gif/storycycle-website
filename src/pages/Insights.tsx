@@ -4,7 +4,7 @@ import { ArrowUpRight } from 'lucide-react'
 import { PageHero } from '../components/PageHero'
 import { Section, Eyebrow, Headline, Body, Reveal, ListRow } from '../components/primitives'
 import { Meta } from '../components/Meta'
-import { ARTICLES_BY_DATE_DESC } from '../data/articles'
+import { ARTICLES_ORDERED } from '../data/articles'
 
 // HubSpot whitepaper "Notify Me" form — portal 6878183, form 080dea10-22d2-4456-ba7d-7c5dd70efd30.
 // The iframe embed HubSpot gives for this form can't be restyled from our CSS (cross-origin), so
@@ -70,11 +70,11 @@ function WhitepaperForm() {
   )
 }
 
-// Newest 3 posts lead as "Featured"; the rest sit under "Recent Thinking".
-const FEATURED = ARTICLES_BY_DATE_DESC.slice(0, 3)
-const RECENT = ARTICLES_BY_DATE_DESC.slice(3)
+// First 3 posts in reading order lead as "Featured"; the rest sit under "Recent Thinking".
+const FEATURED = ARTICLES_ORDERED.slice(0, 3)
+const RECENT = ARTICLES_ORDERED.slice(3)
 
-function FeaturedCard({ article, wide = false }: { article: (typeof ARTICLES_BY_DATE_DESC)[number]; wide?: boolean }) {
+function FeaturedCard({ article, wide = false }: { article: (typeof ARTICLES_ORDERED)[number]; wide?: boolean }) {
   return (
     <Link
       to={`/insights/${article.slug}`}
