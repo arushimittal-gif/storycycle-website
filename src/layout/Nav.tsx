@@ -30,7 +30,7 @@ function NavItem({ text, to }: { text: string; to: string }) {
 export function Logo({ onDark = false }: { onDark?: boolean }) {
   return (
     <Link to="/" style={{ display: 'inline-flex', lineHeight: 0 }}>
-      <img src={onDark ? logoReverse : logoColor} alt="StoryCycle" style={{ height: '34px', width: 'auto', display: 'block' }} />
+      <img src={onDark ? logoReverse : logoColor} alt="StoryCycle" style={{ height: '56px', width: 'auto', display: 'block' }} />
     </Link>
   )
 }
