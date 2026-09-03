@@ -196,28 +196,14 @@ export function Home() {
         </div>
       </Section>
 
-      {/* ── RESULTS · stat band + Harth feature ── */}
+      {/* ── RESULTS · stat band ── */}
       <Section band>
         <Reveal>
           <Headline onDark className="mb-[var(--space-block)]">Documented across<br />four verticals.</Headline>
         </Reveal>
-        <div style={{ marginBottom: 'var(--space-block)' }}>
-          <Reveal>
-            <CTASecondary onDark label="See the case studies" to="/results" />
-          </Reveal>
-        </div>
-        <div className="fab-card p-10 max-w-2xl" style={{ background: 'rgba(236,234,227,0.04)', border: '1px solid rgba(236,234,227,0.16)' }}>
-          <Reveal>
-            <p className="fab-counter" style={{ marginBottom: '10px' }}>Case Study · Harth Builders</p>
-            <h3 className="fab-display" style={{ fontSize: 'clamp(1.4rem, 2.4vw, 1.9rem)', color: '#ECEAE3', margin: '0 0 12px' }}>
-              Selling like a commodity.<br />Despite exceptional work.
-            </h3>
-            <div style={{ marginBottom: 'var(--space-element)' }}>
-              <Body onDark>Harth Builders, luxury residential design-build on Philadelphia's Main Line. A story that wasn't reaching the buyers it deserved.</Body>
-            </div>
-            <CTASecondary onDark label="Read the Harth case study" to="/results/harth-builders" />
-          </Reveal>
-        </div>
+        <Reveal>
+          <CTASecondary onDark label="See the case studies" to="/results" />
+        </Reveal>
       </Section>
 
       {/* ── THE SPREAD · network diagram ── */}

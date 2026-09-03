@@ -116,7 +116,6 @@ export function PEPortfolio() {
           <div style={{ marginBottom: 'var(--space-block)' }}>
             <SeeAlso items={[
               { title: "Donnelly's HVAC", note: 'Single-company version.', to: '/results/donnellys-hvac' },
-              { title: 'Harth Builders', note: 'Premium positioning.', to: '/results/harth-builders' },
               { title: 'Liaison Intl', note: 'Merger integration.', to: '/results/liaison' },
             ]} />
           </div>

@@ -97,7 +97,6 @@ export function LindseyWilson() {
           <div style={{ marginBottom: 'var(--space-block)' }}>
             <SeeAlso items={[
               { title: 'Liaison Intl', note: 'Higher ed tech — mission-driven adjacent.', to: '/results/liaison' },
-              { title: 'Harth Builders', note: 'Different industry, same invisibility problem.', to: '/results/harth-builders' },
               { title: 'PE Portfolio', note: 'Portfolio-scale system deployment.', to: '/results/pe-portfolio' },
             ]} />
           </div>

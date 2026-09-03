@@ -4,7 +4,6 @@ import { Section, Reveal, ListRow } from '../components/primitives'
 import { Meta } from '../components/Meta'
 
 const CASES = [
-  { title: 'Harth Builders', note: 'Selling like a commodity. Despite exceptional work.', channel: 'Home Services', to: '/results/harth-builders' },
   { title: "Donnelly's HVAC", note: 'The work was premium. The pricing was commodity.', channel: 'Home Services', to: '/results/donnellys-hvac' },
   { title: 'Lindsey Wilson', note: 'The best-kept secret in Kentucky. Not anymore.', channel: 'Higher Ed', to: '/results/lindsey-wilson' },
   { title: 'Liaison International', note: 'Two firms merged. One story had to be written.', channel: 'Professional Services', to: '/results/liaison' },

@@ -11,7 +11,6 @@ import { HomeServices } from './pages/HomeServices'
 import { PrivateEquity } from './pages/PrivateEquity'
 import { MissionDriven } from './pages/MissionDriven'
 import { Results } from './pages/Results'
-import { Harth } from './pages/Harth'
 import { Donnellys } from './pages/Donnellys'
 import { LindseyWilson } from './pages/LindseyWilson'
 import { Liaison } from './pages/Liaison'
@@ -65,7 +64,6 @@ export default function App() {
         <Route path="/who-its-for/mission-driven" element={<MissionDriven />} />
 
         <Route path="/results" element={<Results />} />
-        <Route path="/results/harth-builders" element={<Harth />} />
         <Route path="/results/donnellys-hvac" element={<Donnellys />} />
         <Route path="/results/lindsey-wilson" element={<LindseyWilson />} />
         <Route path="/results/liaison" element={<Liaison />} />

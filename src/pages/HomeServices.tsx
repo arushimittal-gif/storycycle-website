@@ -67,7 +67,7 @@ export function HomeServices() {
             </StatRow>
           </div>
           <div style={{ maxWidth: '760px', marginBottom: 'var(--space-element)' }}>
-            <Body onDark>Donnelly's HVAC. Plus Harth Builders.</Body>
+            <Body onDark>Donnelly's HVAC.</Body>
           </div>
           <CTASecondary onDark label="See all case studies" to="/results" />
         </Reveal>

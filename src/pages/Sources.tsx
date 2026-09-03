@@ -12,7 +12,6 @@ const INTERNAL = [
   { id: 'H', title: 'Liaison International Case Study', note: 'Source for the merger integration narrative.' },
   { id: 'I', title: 'Paul Downs Cabinetry Case Study', note: 'Source for the vendor-to-partner repositioning narrative.' },
   { id: 'J', title: 'Lilly Fasteners Case Study', note: 'Source for the regional-to-national brand architecture transformation.' },
-  { id: 'K', title: 'Harth Builders Case Study (Projected)', note: 'Projected results only, not displayed publicly.' },
   { id: 'L', title: 'Law Firms Strategy + Outbound Plan', note: 'Six commercial consequences, six timing triggers, voice rules.' },
 ]
 

@@ -83,7 +83,6 @@ export function PaulDowns() {
           <div style={{ marginBottom: 'var(--space-block)' }}>
             <SeeAlso items={[
               { title: 'Liaison Intl', note: 'Same channel. Professional services.', to: '/results/liaison' },
-              { title: 'Harth Builders', note: 'Adjacent. Designer trust.', to: '/results/harth-builders' },
               { title: "Donnelly's HVAC", note: 'Same logic. Different industry.', to: '/results/donnellys-hvac' },
             ]} />
           </div>

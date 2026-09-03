@@ -95,7 +95,6 @@ export function Donnellys() {
         <Reveal>
           <div style={{ marginBottom: 'var(--space-block)' }}>
             <SeeAlso items={[
-              { title: 'Harth Builders', note: 'Same channel. Premium repositioning.', to: '/results/harth-builders' },
               { title: 'Paul Downs', note: 'Commodity vendor into designer\'s partner.', to: '/results/paul-downs' },
               { title: 'PE Portfolio', note: 'Same system. Six companies.', to: '/results/pe-portfolio' },
             ]} />
