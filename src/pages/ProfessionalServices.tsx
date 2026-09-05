@@ -1,4 +1,4 @@
-import { PageHero, SeeAlso } from '../components/PageHero'
+import { PageHero } from '../components/PageHero'
 import { Section, Eyebrow, Headline, Body, TileGrid, Tile, CTA, CTASecondary, Reveal, Quote } from '../components/primitives'
 import { Meta } from '../components/Meta'
 
@@ -63,12 +63,6 @@ export function ProfessionalServices() {
             <Body onDark>Documented engagements across accounting, engineering, consulting, financial advisory, staffing, and law firms.</Body>
           </div>
         </Reveal>
-        <div style={{ marginBottom: 'var(--space-block)' }}>
-          <SeeAlso items={[
-            { title: 'Paul Downs Cabinetry', note: 'Designers stopped asking for quotes. They started asking for help.', to: '/results/paul-downs' },
-            { title: 'Liaison International', note: 'Two firms merged. One story had to be written.', to: '/results/liaison' },
-          ]} />
-        </div>
         <Reveal>
           <CTASecondary onDark label="See all case studies" to="/results" />
         </Reveal>

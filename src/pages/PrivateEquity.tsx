@@ -73,7 +73,7 @@ export function PrivateEquity() {
           <div style={{ maxWidth: '760px', marginBottom: 'var(--space-element)' }}>
             <Body onDark>$38M–$92M revenue companies. Six independent companies across different funds and ownership structures, each deployed individually. Year 1 averaged +35% lead volume and +22% sales cycle acceleration, with 82% of employees able to articulate the core story. $2.8M+ aggregate Year 1 revenue lift.</Body>
           </div>
-          <CTASecondary onDark label="Read the PE Portfolio case study" to="/results/pe-portfolio" />
+          <CTASecondary onDark label="See all case studies" to="/results" />
         </Reveal>
       </Section>
 

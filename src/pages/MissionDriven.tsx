@@ -79,7 +79,7 @@ export function MissionDriven() {
           <div style={{ marginTop: 'var(--space-element)', maxWidth: '760px', marginBottom: 'var(--space-element)' }}>
             <Body onDark>Lindsey Wilson University. Regional institution. Transformational outcomes. Zero brand recognition outside Kentucky.</Body>
           </div>
-          <CTASecondary onDark label="Read the Lindsey Wilson case study" to="/results/lindsey-wilson" />
+          <CTASecondary onDark label="See all case studies" to="/results" />
         </Reveal>
       </Section>
 

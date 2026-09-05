@@ -11,12 +11,6 @@ import { HomeServices } from './pages/HomeServices'
 import { PrivateEquity } from './pages/PrivateEquity'
 import { MissionDriven } from './pages/MissionDriven'
 import { Results } from './pages/Results'
-import { Donnellys } from './pages/Donnellys'
-import { LindseyWilson } from './pages/LindseyWilson'
-import { Liaison } from './pages/Liaison'
-import { PaulDowns } from './pages/PaulDowns'
-import { LillyFasteners } from './pages/LillyFasteners'
-import { PEPortfolio } from './pages/PEPortfolio'
 import { Insights } from './pages/Insights'
 import { InsightArticle } from './pages/InsightArticle'
 import { Sources } from './pages/Sources'
@@ -64,12 +58,6 @@ export default function App() {
         <Route path="/who-its-for/mission-driven" element={<MissionDriven />} />
 
         <Route path="/results" element={<Results />} />
-        <Route path="/results/donnellys-hvac" element={<Donnellys />} />
-        <Route path="/results/lindsey-wilson" element={<LindseyWilson />} />
-        <Route path="/results/liaison" element={<Liaison />} />
-        <Route path="/results/paul-downs" element={<PaulDowns />} />
-        <Route path="/results/lilly-fasteners" element={<LillyFasteners />} />
-        <Route path="/results/pe-portfolio" element={<PEPortfolio />} />
 
         <Route path="/insights" element={<Insights />} />
         <Route path="/insights/:slug" element={<InsightArticle />} />
