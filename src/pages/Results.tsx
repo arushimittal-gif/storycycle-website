@@ -244,7 +244,7 @@ export function Results() {
   const [symptom, setSymptom] = useState('All problems')
   const [vertical, setVertical] = useState('All verticals')
   const [open, setOpen] = useState<Record<string, boolean>>({})
-  const [formIndustry, setFormIndustry] = useState('Design-Build')
+  const [formIndustry] = useState('Design-Build')
   const [picked, setPicked] = useState<Record<string, boolean>>({})
   const [submitted, setSubmitted] = useState(false)
 
