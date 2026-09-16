@@ -17,6 +17,11 @@ const INK = '#25282A'
 const AMBER = '#FBB03B'
 const CREAM = '#F5F1EA'
 
+// Hidden per Andy/Arushi 2026-09-15 sync: this form is a non-functional
+// Cloud Design prototype (no HubSpot wiring, submissions go nowhere) and
+// its copy/purpose hasn't been decided. Flip back on once that's settled.
+const SHOW_REQUEST_FORM = false
+
 type Card = {
   id: string
   icon: LucideIcon
@@ -57,7 +62,7 @@ const CARDS: Card[] = [
     symptom: 'New market, no way to reach a specific buyer',
     vertical: 'Home Services & Trades',
     profile: 'Design-build firm · $10M+ · East Coast · founder-led',
-    headline: 'Invisible to the exact houses you’re best at',
+    headline: 'Your best houses don’t know you exist',
     deck: 'The firm’s best work happened in one kind of house. The marketing bought demographics and hoped the right houses were inside them. We found the houses instead.',
     quietProblem: 'Your best buyer is a specific house, not a demographic. The whole industry markets to demographics.',
     found: 'The highest-margin projects shared an address type, not an audience profile. A second property leaves a second paper trail. Public records could surface the exact houses the firm was built to renovate.',
@@ -259,23 +264,28 @@ export function Results() {
                 <p style={{ fontSize: '12px', color: 'rgba(37,40,42,0.55)', letterSpacing: '0.08em', textTransform: 'uppercase', fontWeight: 600, margin: '0 0 12px', fontFamily: 'Roboto, sans-serif' }}>Results</p>
                 <h1 className="fab-display" style={{ fontSize: 'clamp(2.5rem,6.5vw,5.5rem)', color: INK, margin: 0 }}>
                   You won&rsquo;t find your name here.<br />But maybe you&rsquo;ll find your{' '}
-                  <span style={{ background: `linear-gradient(transparent 78%, ${AMBER} 78%)` }}>challenge</span>.
+                  <span
+                    style={{
+                      backgroundImage: `linear-gradient(${AMBER}, ${AMBER})`,
+                      backgroundSize: '100% 10px',
+                      backgroundPosition: '0 100%',
+                      backgroundRepeat: 'no-repeat',
+                      paddingBottom: '10px',
+                    }}
+                  >
+                    challenge
+                  </span>
+                  .
                 </h1>
               </div>
               <div style={{ margin: '0 0 12px' }}>
                 <p style={{ fontSize: '16px', lineHeight: 1.6, color: 'rgba(37,40,42,0.7)', margin: '0 0 16px', fontFamily: 'Roboto, sans-serif' }}>
-                  Client stories belong to the clients. We share the mechanism openly and the full case, with the name and the numbers, on request.
+                  Client stories belong to the clients. We&rsquo;ll walk you through the mechanism openly; the full case, with the name and the numbers, are available on request.
                 </p>
                 <p style={{ fontSize: '13px', lineHeight: 1.6, color: 'rgba(37,40,42,0.5)', margin: 0, fontFamily: 'Roboto, sans-serif' }}>
                   Go-to-market case studies for professional services, home services, colleges, and PE portfolio companies.
                 </p>
               </div>
-            </div>
-            <div className="flex justify-between items-center flex-wrap gap-2" style={{ marginTop: 'clamp(40px,6vh,72px)' }}>
-              <p style={{ fontSize: '12px', color: 'rgba(37,40,42,0.5)', margin: 0, fontFamily: 'Roboto, sans-serif' }}>
-                Documented by <Link to="/about" style={{ color: 'rgba(37,40,42,0.7)' }}>Enrique Mendoza, founder, Bowstring</Link>
-              </p>
-              <p style={{ fontSize: '12px', color: 'rgba(37,40,42,0.5)', margin: 0, fontFamily: 'Roboto, sans-serif' }}>Last reviewed: September 2026</p>
             </div>
           </Reveal>
         </div>
@@ -288,7 +298,7 @@ export function Results() {
             <div className="grid grid-cols-1 md:grid-cols-[340px_1fr] gap-8">
               <h2 className="fab-display" style={{ fontSize: '18px', color: INK, margin: 0 }}>How these cases are written</h2>
               <p style={{ fontSize: '15px', lineHeight: 1.7, color: 'rgba(37,40,42,0.7)', margin: 0, maxWidth: '720px', fontFamily: 'Roboto, sans-serif' }}>
-                Every case on this page is an engagement we ran. Each one is written from the internal brief and the client-reviewed deliverables. Names and figures are withheld at the client&rsquo;s discretion and provided on request.
+                Every case on this page is a real engagement, written from the internal brief and the deliverables the client signed off on. Names and figures are withheld at the client&rsquo;s request, and available on request for anyone vetting us seriously.
               </p>
             </div>
           </Reveal>
@@ -396,17 +406,22 @@ export function Results() {
                         )}
 
                         <p style={{ fontSize: '14px', lineHeight: 1.6, color: INK, margin: '0 0 36px', fontFamily: 'Roboto, sans-serif' }}>
-                          <span style={{ background: 'linear-gradient(transparent 62%, rgba(251,176,59,0.5) 62%)' }}>{c.trueDetail}</span>
+                          <span
+                            style={{
+                              backgroundImage: 'linear-gradient(rgba(251,176,59,0.55), rgba(251,176,59,0.55))',
+                              backgroundSize: '100% 6px',
+                              backgroundPosition: '0 100%',
+                              backgroundRepeat: 'no-repeat',
+                              paddingBottom: '4px',
+                            }}
+                          >
+                            {c.trueDetail}
+                          </span>
                         </p>
 
-                        <a
-                          href="#request"
-                          onClick={() => { setFormIndustry(c.industry); setSubmitted(false) }}
-                          className="fab-pill"
-                          style={{ textDecoration: 'none' }}
-                        >
+                        <Link to="/fast-positioning-audit" className="fab-pill" style={{ textDecoration: 'none' }}>
                           {c.cta} <span aria-hidden="true">&rarr;</span>
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -418,11 +433,8 @@ export function Results() {
         </div>
       </section>
 
-      {/* ── REQUEST THE WORKING PAGE ── */}
-      {/* TODO (HubSpot wiring): this form is currently local-state only, matching
-          the imported design's own behavior — no submission wired to HubSpot or
-          any backend yet. Needs a real form ID from Enrique before this collects
-          leads for real, same as the Fast Positioning Audit / whitepaper forms. */}
+      {/* ── REQUEST THE WORKING PAGE (hidden — see SHOW_REQUEST_FORM) ── */}
+      {SHOW_REQUEST_FORM && (
       <section id="request" style={{ background: CREAM, padding: '88px 0' }}>
         <div className="sc-container" style={{ maxWidth: '880px' }}>
           {!submitted ? (
@@ -470,6 +482,7 @@ export function Results() {
           )}
         </div>
       </section>
+      )}
 
       {/* ── DON'T SEE YOUR CHALLENGE? ── */}
       <section style={{ padding: '100px 0 120px' }}>
