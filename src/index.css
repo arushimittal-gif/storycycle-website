@@ -47,13 +47,19 @@ body { background: #ECEAE3; color: #25282A; }
    type, numbered counters, rounded surfaces, pill buttons.
    ───────────────────────────────────────────────────────── */
 
-/* Giant display head — sentence case, tight, trailing period supplied in copy */
+/* Giant display head — tight, trailing period supplied in copy */
 .fab-display {
   font-family: var(--font-display);
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 0.98;
   margin: 0;
+}
+
+/* Headings (not decorative reuses of .fab-display — quotes, stat numbers,
+   nav links, list rows) are all-caps site-wide. */
+h1.fab-display, h2.fab-display, h3.fab-display {
+  text-transform: uppercase;
 }
 
 /* Numbered counter label — "(07)", "(001)" */
